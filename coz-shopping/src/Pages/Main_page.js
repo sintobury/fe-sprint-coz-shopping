@@ -6,7 +6,8 @@ import axios from 'axios';
 import "./Main_page.css"
 
 const Main_page = () => {
-    const [data, setData] = useState([])
+    const [data, setData] = useState([]);
+    const [bookmarkList, setBookmarkList] = useState([]);
 
     const getData = () => {
         return axios
@@ -28,7 +29,7 @@ const Main_page = () => {
     return (
         <div className="main">
             <Header/>
-            <ItemList data={data}/>
+            <ItemList data={data} addBookmark={setBookmarkList}/>
             <Footer/>
         </div>
     )

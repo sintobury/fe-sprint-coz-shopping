@@ -1,7 +1,9 @@
 import React from "react";
 import './item.css'
 
-const ProductItem = ({data, idx}) => {
+const ProductItem = ({data, idx, addBookmark}) => {
+    //addBookmark= setBookmarkList
+    
     if(data.length === 0){
         return 
     } else {
@@ -23,7 +25,7 @@ const ProductItem = ({data, idx}) => {
                 </div>
             </div>
         </section>
-    )
+        )
     }
 }
 

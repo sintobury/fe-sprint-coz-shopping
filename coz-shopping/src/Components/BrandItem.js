@@ -1,7 +1,7 @@
 import React from "react";
 import "./item.css"
 
-const BrandItem = ({data, idx}) => {
+const BrandItem = ({data, idx, addBookmark}) => {
     if(data.length === 0){
         return 
     } else {
