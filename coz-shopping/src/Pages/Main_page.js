@@ -3,6 +3,7 @@ import Header from '../Components/Header'
 import Footer from "../Components/Footer";
 import ItemList from "../Components/ItemList";
 import axios from 'axios';
+import "./Main_page.css"
 
 const Main_page = () => {
     const [data, setData] = useState([])
@@ -25,7 +26,7 @@ const Main_page = () => {
     const localdata = JSON.parse(window.localStorage.getItem('itemdata'))
     
     return (
-        <div>
+        <div className="main">
             <Header/>
             <ItemList data={data}/>
             <Footer/>

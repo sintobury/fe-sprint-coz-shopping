@@ -1,4 +1,5 @@
 import React from "react";
+import './item.css'
 
 const ProductItem = ({data, idx}) => {
     if(data.length === 0){
@@ -6,11 +7,16 @@ const ProductItem = ({data, idx}) => {
     } else {
     return (
         <section>
-            <img src={data[idx].image_url} alt=''></img>
+            <div>
+                <div className="img_container">
+                    <img src={data[idx].image_url} alt='' className="background"></img>
+                    <img src="img/북마크 아이콘.png" className="bookmark"></img>
+                </div>
+            </div>
             <div className="item_content">
                 <div className="first">
-                    <div>{data[idx].title}</div>
-                    <div>{data[idx].discountPercentage}%</div>
+                    <div className="first_left">{data[idx].title}</div>
+                    <div className="first_right">{data[idx].discountPercentage}%</div>
                 </div>
                 <div className="second">
                     {data[idx].price}원

@@ -3,6 +3,7 @@ import ProductItem from "./Productitem";
 import CategoryItem from "./CategoryItem";
 import ExhibitionItem from "./ExhibitionItem";
 import BrandItem from "./BrandItem";
+import "./ItemList.css"
  
 const ItemList = ({data}) => {
 
@@ -23,7 +24,7 @@ const ItemList = ({data}) => {
     const brandidx = data.length === 0 ? 0 : getRandomIntInclusive(0, Brand.length-1)
 
     return (
-        <div>
+        <div className="itemlist_container">
             <ProductItem data={Product} idx={productidx}/>
             <CategoryItem data={Category} idx={categoryidx}/>
             <ExhibitionItem data={Exhibition} idx={exhibitionidx}/>
