@@ -1,17 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import './Header.css';
 
 
 const Header = ( ) => {
-    const [hover,setHover] = useState(false)
-
-    const hoverMouseover = ()=>{
-        setHover(true);
-    }
-    const hoverMouseout = ()=>{
-        setHover(false);
-    }
     
     return (
         <header>
@@ -21,9 +13,9 @@ const Header = ( ) => {
                     <label htmlFor="logo"><h1>COZ Shopping</h1></label>
                 </Link>
             </section>
-            <section className="right_section" onMouseOver={hoverMouseover} onMouseOut={hoverMouseout}>
+            <section className="right_section" >
                 <img src="img/아이콘.png" className="hamburger" alt="더보기" ></img>
-                <div className="dropdown_container"> {/*{hover ? "dropdown_container" : 'hide'}> */}
+                <div className="dropdown_container">  
                     <div className="dropdown_menu">000님, 안녕하세요!</div>
                     <div className="dropdown_menu">
                         <Link to='/products/list'>
