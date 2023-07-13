@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from "react";
 import './item.css'
+import Modal from "./Modal";
 
 const ProductItem = ({data, idx}) => {
-    //addBookmark= setBookmarkList
     const [clicked, setClicked] = useState(false);
     const [list, setList] = useState([]);
+    const [open, setOpen] = useState(false);
 
     const handleModal = () => {
-        
+        setOpen(!open);
     }
 
     const handleBookmark = () => {
@@ -32,10 +33,11 @@ const ProductItem = ({data, idx}) => {
     } else {
     return (
         <section>
+            {open ? <Modal data={data[idx]} setOpen={setOpen} setClicked={setClicked} setList={setList} list={list} clicked={clicked}/> : null}
             <div>
                 <div className="img_container">
-                    <img src={data[idx].image_url} alt='' className="background"></img>
-                    <img src="img/북마크 아이콘.png" className={!clicked ? "bookmark" : 'hide'} onClick={handleBookmark}></img>
+                    <img src={data[idx].image_url} alt='' className="background" onClick={handleModal}></img>
+                    <img src="img/북마크 해제 아이콘.png" className={!clicked ? "bookmark" : 'hide'} onClick={handleBookmark}></img>
                     <img src="img/북마크됨 아이콘.png" className={clicked ? "bookmark": 'hide'} onClick={deleteBookmark}></img>
                 </div>
             </div>
