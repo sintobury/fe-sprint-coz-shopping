@@ -1,8 +1,15 @@
 header {
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: sticky;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow:rgba(0,0,0,0.1) 0 0.8px 8px;
+    background-color: white;
+    z-index: 100;
 }
 
 .left_section {
@@ -21,6 +28,7 @@ header {
 h1 {
     font-size: 32px;
     font-weight: 700;
+    margin: 0;
 }
 h1:hover {
     cursor: pointer;
@@ -35,7 +43,9 @@ h1:hover {
     justify-content: center;
     gap: 12px;
     position: relative;
+    cursor: pointer;
     &:hover .dropdown_container {
+        visibility: visible;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -47,15 +57,14 @@ h1:hover {
         border-radius: 10px;
         text-align: left;
         background-color: white;
+        box-shadow:rgba(0,0,0,0.2) 1px 4px 21px;
     }
 }
 
-.right_section:hover {
-    cursor: pointer;
-}
-
 .dropdown_container {
+    visibility: hidden;
     display: none;
+    transition: 1s;
 }
 
 .dropdown_menu {
