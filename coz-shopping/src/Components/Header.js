@@ -16,7 +16,7 @@ const Header = ( ) => {
             <section className="right_section" >
                 <img src="img/아이콘.png" className="hamburger" alt="더보기" ></img>
                 <div className="dropdown_container">  
-                    <div className="dropdown_menu">000님, 안녕하세요!</div>
+                    <div className="dropdown_menu"> 허찬욱님, 안녕하세요!</div>
                     <div className="dropdown_menu">
                         <Link to='/products/list'>
                             <img src="img/상품 아이콘.png" alt="상품리스트 페이지" id="product_icon"></img>

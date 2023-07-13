@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import Header from '../Components/Header'
 import Footer from "../Components/Footer";
 import ItemList from "../Components/ItemList";
+import BookmarkList from "../Components/Bookmark"; 
 import axios from 'axios';
 import "./Main_page.css"
 
@@ -29,6 +30,7 @@ const Main_page = () => {
         <div className="main">
             <Header/>
             <ItemList data ={data} />
+            <BookmarkList setBookmarkList={setBookmarkList}/>
             <Footer/>
         </div>
     )

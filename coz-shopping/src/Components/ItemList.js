@@ -25,10 +25,13 @@ const ItemList = ({data}) => {
     
     return (
         <div className="itemlist_container">
-            <ProductItem data={Product} idx={productidx} />
-            <CategoryItem data={Category} idx={categoryidx} />
-            <ExhibitionItem data={Exhibition} idx={exhibitionidx} />
-            <BrandItem data={Brand} idx={brandidx} />
+            <h2>상품 리스트</h2>
+            <div className="item_container">
+                <ProductItem data={Product} idx={productidx} />
+                <CategoryItem data={Category} idx={categoryidx} />
+                <ExhibitionItem data={Exhibition} idx={exhibitionidx} />
+                <BrandItem data={Brand} idx={brandidx} />
+            </div>
         </div>
     )
 }

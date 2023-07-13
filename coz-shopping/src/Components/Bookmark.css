@@ -1,11 +1,11 @@
-.itemlist_container {
+
+.bookmarklist_container {
     padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
-
-.item_container {
+.bookmark_container {
     display: flex;
     flex-direction: row;
     gap: 24px;
@@ -16,3 +16,4 @@ h2 {
     font-size: 24px;
     font-weight: 600;
 }
+
