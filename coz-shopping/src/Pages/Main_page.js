@@ -7,26 +7,28 @@ import "./Main_page.css"
 
 const Main_page = () => {
     const [bookmarkList, setBookmarkList] = useState([]);
-
+    const [data,setData] = useState([]);
     const getData = () => {
         return axios
         .get('http://cozshopping.codestates-seb.link/api/v1/products')
         .then( (res) => {
+            setData(res.data)
             window.localStorage.setItem('itemdata', JSON.stringify(res.data));
         })
         .catch((err) => {
             console.log(err.response.data)
         });
     };
-    useEffect(()=>{
+    useEffect( ()=>{
         getData();
     }, []);
     const localdata = JSON.parse(window.localStorage.getItem('itemdata'))
-    console.log(localdata[0])
+    console.log(data[0])
+
     return (
         <div className="main">
             <Header/>
-            <ItemList addBookmark={setBookmarkList} list={bookmarkList}/>
+            <ItemList data ={data} addBookmark={setBookmarkList} list={bookmarkList}/>
             <Footer/>
         </div>
     )
