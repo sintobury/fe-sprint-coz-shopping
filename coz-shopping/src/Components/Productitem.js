@@ -1,9 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import './item.css'
 
-const ProductItem = ({data, idx, addBookmark}) => {
+const ProductItem = ({data, idx, addBookmark ,list}) => {
     //addBookmark= setBookmarkList
-    
+    const handleBookmark = () => {
+        addBookmark([...list, data[idx]]);
+    }
+    const setBookmarkList = () => {
+        window.localStorage.setItem('bookmarklist', list);
+    }
+    useEffect(() => {
+        setBookmarkList();
+    }, [list]);
+
     if(data.length === 0){
         return 
     } else {
@@ -12,7 +21,7 @@ const ProductItem = ({data, idx, addBookmark}) => {
             <div>
                 <div className="img_container">
                     <img src={data[idx].image_url} alt='' className="background"></img>
-                    <img src="img/북마크 아이콘.png" className="bookmark"></img>
+                    <img src="img/북마크 아이콘.png" className="bookmark" onClick={handleBookmark}></img>
                 </div>
             </div>
             <div className="item_content">

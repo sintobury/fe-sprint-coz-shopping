@@ -1,7 +1,7 @@
 import React from "react";
 import "./item.css"
 
-const ExhibitionItem = ({data, idx, addBookmark}) => {
+const ExhibitionItem = ({data, idx, addBookmark ,list}) => {
     if(data.length === 0){
         return 
     } else {
