@@ -28,7 +28,7 @@ const Main_page = () => {
     return (
         <div className="main">
             <Header/>
-            <ItemList data ={data} addBookmark={setBookmarkList} list={bookmarkList}/>
+            <ItemList data ={data} />
             <Footer/>
         </div>
     )

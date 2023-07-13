@@ -54,7 +54,7 @@ section {
 
 .first_left {
     text-align: left;
-    flex: 1 0 0;
+    flex: 2 0 0;
 }
 
 .first_right {

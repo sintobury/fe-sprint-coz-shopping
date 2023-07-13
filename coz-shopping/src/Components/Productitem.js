@@ -1,27 +1,31 @@
 import React, {useState, useEffect} from "react";
 import './item.css'
 
-const ProductItem = ({data, idx, addBookmark ,list}) => {
+const ProductItem = ({data, idx}) => {
     //addBookmark= setBookmarkList
     const [clicked, setClicked] = useState(false);
+    const [list, setList] = useState([]);
+
+    const handleModal = () => {
+        
+    }
 
     const handleBookmark = () => {
-        addBookmark([...list, data[idx]]);
+        setList([...list, data[idx]]);
         setClicked(!clicked);
     }
     const deleteBookmark = () => {
-        addBookmark([...list.filter((el)=> el!==data[idx])]);
+        setList([...list.filter((el)=> el!==data[idx])]);
         setClicked(!clicked);
     }
 
     const setBookmarkList = () => {
-        window.localStorage.setItem('bookmarklist', JSON.stringify(list));
-        console.log(JSON.parse(window.localStorage.getItem('bookmarklist')))
+        window.localStorage.setItem('ProductBookmark', JSON.stringify( list));
+        console.log(JSON.parse(window.localStorage.getItem('ProductBookmark')))
     }
     useEffect(() => {
         setBookmarkList();
     }, [list]);
-    
 
     if(data.length === 0){
         return 
@@ -41,7 +45,7 @@ const ProductItem = ({data, idx, addBookmark ,list}) => {
                     <div className="first_right">{data[idx].discountPercentage}%</div>
                 </div>
                 <div className="second">
-                    {data[idx].price}원
+                    {Number(data[idx].price).toLocaleString()}원
                 </div>
             </div>
         </section>

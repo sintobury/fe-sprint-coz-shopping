@@ -1,7 +1,27 @@
-import React from "react";
+import React ,{useState, useEffect} from "react";
 import "./item.css"
 
-const BrandItem = ({data, idx, addBookmark ,list}) => {
+const BrandItem = ({data, idx}) => {
+    const [clicked, setClicked] = useState(false);
+    const [list, setList] = useState([]);
+
+    const handleBookmark = () => {
+        setList([...list, data[idx]]);
+        setClicked(!clicked);
+    }
+    const deleteBookmark = () => {
+        setList([...list.filter((el)=> el!==data[idx])]);
+        setClicked(!clicked);
+    }
+
+    const setBookmarkList = () => {
+        window.localStorage.setItem('BrandBookmark', JSON.stringify(list));
+        console.log(JSON.parse(window.localStorage.getItem('BrandBookmark')))
+    }
+    useEffect(() => {
+        setBookmarkList();
+    }, [list]);
+
     if(data.length === 0){
         return 
     } else {
@@ -9,7 +29,8 @@ const BrandItem = ({data, idx, addBookmark ,list}) => {
         <section>
             <div className="img_container">
                 <img src={data[idx].brand_image_url} alt='' className="background"></img>
-                <img src="img/북마크 아이콘.png" className="bookmark"></img>
+                <img src="img/북마크 아이콘.png" className={!clicked ? "bookmark" : 'hide'} onClick={handleBookmark}></img>
+                <img src="img/북마크됨 아이콘.png" className={clicked ? "bookmark": 'hide'} onClick={deleteBookmark}></img>
             </div>
             <div className="item_content">
                 <div className="first">
@@ -17,11 +38,11 @@ const BrandItem = ({data, idx, addBookmark ,list}) => {
                     <div className="first_right_br">관심고객수</div>
                 </div>
                 <div className="second_br">
-                    {data[idx].follower}
+                    {Number(data[idx].follower).toLocaleString()}
                 </div>
             </div>
         </section>
-    )
+        )
     }
 }
 

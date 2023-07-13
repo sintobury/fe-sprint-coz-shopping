@@ -1,7 +1,27 @@
-import React from "react";
+import React ,{useState, useEffect} from "react";
 import "./item.css"
 
-const CategoryItem = ({data, idx, addBookmark ,list}) => {
+const CategoryItem = ({data, idx}) => {
+    const [clicked, setClicked] = useState(false);
+    const [list, setList] = useState([]);
+
+    const handleBookmark = () => {
+        setList([...list, data[idx]]);
+        setClicked(!clicked);
+    }
+    const deleteBookmark = () => {
+        setList([...list.filter((el)=> el!==data[idx])]);
+        setClicked(!clicked);
+    }
+
+    const setBookmarkList = () => {
+        window.localStorage.setItem('CategoryBookmark', JSON.stringify(list));
+        console.log(JSON.parse(window.localStorage.getItem('CategoryBookmark')))
+    }
+    useEffect(() => {
+        setBookmarkList();
+    }, [list]);
+
     if(data.length === 0){
         return 
     } else {
@@ -10,13 +30,14 @@ const CategoryItem = ({data, idx, addBookmark ,list}) => {
         <section>
             <div className="img_container">
                 <img src={data[idx].image_url} alt='' className="background"></img>
-                <img src="img/북마크 아이콘.png" className="bookmark"></img>
+                <img src="img/북마크 아이콘.png" className={!clicked ? "bookmark" : 'hide'} onClick={handleBookmark}></img>
+                <img src="img/북마크됨 아이콘.png" className={clicked ? "bookmark": 'hide'} onClick={deleteBookmark}></img>
             </div>
             <div className="item_content">
                 <div className="first_category"># {data[idx].title}</div>
             </div>
         </section>
-    )
+        )
     }
 }
 
