@@ -25,7 +25,6 @@ const Main_page = () => {
     useEffect( ()=>{
         getData();
     }, []);
-    const localdata = JSON.parse(window.localStorage.getItem('itemdata'))
 
     return (
         <div className="main">

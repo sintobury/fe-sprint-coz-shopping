@@ -43,8 +43,8 @@ const ProductItem = ({data, idx, setBookmarkList, bookmarkList}) => {
             <div>
                 <div className="img_container">
                     <img src={data[idx].image_url} alt='' className="background" onClick={handleModal}></img>
-                    <img src="img/북마크 해제 아이콘.png" className={!clicked ? "bookmark" : 'hide'} onClick={handleBookmark}></img>
-                    <img src="img/북마크됨 아이콘.png" className={clicked ? "bookmark": 'hide'} onClick={deleteBookmark}></img>
+                    <img src="/img/북마크 해제 아이콘.png" className={!clicked ? "bookmark" : 'hide'} onClick={handleBookmark}></img>
+                    <img src="/img/북마크됨 아이콘.png" className={clicked ? "bookmark": 'hide'} onClick={deleteBookmark}></img>
                 </div>
             </div>
             <div className="item_content">

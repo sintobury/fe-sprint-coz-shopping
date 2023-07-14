@@ -30,8 +30,8 @@ const Modal = ({data, setOpen, setClicked, setList,list, clicked}) => {
                 <div className="modalBackdrop" onClick={()=>setOpen(false)}>
                     <div className="modalview" onClick={(e)=> e.stopPropagation()}>
                         <img className="view" src={url}></img>
-                        <img src="img/북마크 해제 아이콘.png" className={!clicked ? "modal_bookmark" : 'modal_hide'} onClick={handleBookmark}></img>
-                        <img src="img/북마크됨 아이콘.png" className={clicked ? "modal_bookmark": 'modal_hide'} onClick={deleteBookmark}></img>
+                        <img src="/img/북마크 해제 아이콘.png" className={!clicked ? "modal_bookmark" : 'modal_hide'} onClick={handleBookmark}></img>
+                        <img src="/img/북마크됨 아이콘.png" className={clicked ? "modal_bookmark": 'modal_hide'} onClick={deleteBookmark}></img>
                         <button onClick={()=>setOpen(false)}>X</button>
                         <div className="title">{title}</div> 
                     </div>

@@ -1,0 +1,9 @@
+.ItemList_page {
+    padding-top: 80px;
+    width: 100%;
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
