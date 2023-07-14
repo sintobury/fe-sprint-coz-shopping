@@ -7,7 +7,8 @@ import axios from 'axios';
 import "./Main_page.css"
 
 const Main_page = () => {
-    const [bookmarkList, setBookmarkList] = useState([]);
+    const localBookmarkList = JSON.parse(window.localStorage.getItem('bookmarkList'))
+    const [bookmarkList, setBookmarkList] = useState(localBookmarkList? localBookmarkList : []);
     const [data,setData] = useState([]);
     
     const getData = () => {

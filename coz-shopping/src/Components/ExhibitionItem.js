@@ -19,11 +19,15 @@ const ExhibitionItem = ({data, idx, setBookmarkList, bookmarkList}) => {
         setClicked(!clicked);
     }
     useEffect(()=>{
+        if(data[idx] === undefined){
+            return
+        }
         if(bookmarkList.filter((el)=>el.id===data[idx].id).length !== 0){
             setClicked(true);
         } else {
             setClicked(false);
         }
+        window.localStorage.setItem('bookmarkList', JSON.stringify(bookmarkList));
     },[bookmarkList])
 
     if(data.length === 0){

@@ -6,6 +6,9 @@ const ProductItem = ({data, idx, setBookmarkList, bookmarkList}) => {
     const [clicked, setClicked] = useState(false);
     const [open, setOpen] = useState(false);
 
+    const localBookmarkList = JSON.parse(window.localStorage.getItem('bookmarkList'))
+    
+    console.log('data[idx]:', data[idx], 'localBookmarkList:', localBookmarkList)
     const handleModal = () => {
         setOpen(!open);
     }
@@ -18,13 +21,17 @@ const ProductItem = ({data, idx, setBookmarkList, bookmarkList}) => {
         setBookmarkList([...bookmarkList.filter((el)=> el!==data[idx])]);
         setClicked(!clicked);
     }
+    
     useEffect(()=>{
-        if(bookmarkList.filter((el)=>el.id===data[idx].id).length !== 0){
+        if(data[idx] === undefined){
+            return
+        }
+        if(bookmarkList.filter((el)=>el.id === data[idx].id).length !== 0){
             setClicked(true);
         } else {
             setClicked(false);
         }
-        
+        window.localStorage.setItem('bookmarkList', JSON.stringify(bookmarkList));
     },[bookmarkList])
 
     if(data.length === 0){

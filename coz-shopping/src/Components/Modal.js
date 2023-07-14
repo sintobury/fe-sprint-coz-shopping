@@ -12,7 +12,7 @@ const Modal = ({data, setOpen, setClicked, setList,list, clicked}) => {
         setClicked(!clicked);
     }
     let title, url
-    if(data.type == 'Brand'){
+    if(data.type ==='Brand'){
         title = data.brand_name;
         url = data.brand_image_url;
     } else if(data.type === 'Category'){
