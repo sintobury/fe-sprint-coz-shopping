@@ -2,12 +2,15 @@ import React, {useEffect, useState} from "react";
 import Header from '../Components/Header'
 import Footer from "../Components/Footer";
 import ItemList from "../Components/ItemList";
+import BookmarkList from "../Components/Bookmark"; 
 import axios from 'axios';
 import "./Main_page.css"
 
 const Main_page = () => {
-    const [bookmarkList, setBookmarkList] = useState([]);
+    const localBookmarkList = JSON.parse(window.localStorage.getItem('bookmarkList'))
+    const [bookmarkList, setBookmarkList] = useState(localBookmarkList? localBookmarkList : []);
     const [data,setData] = useState([]);
+    
     const getData = () => {
         return axios
         .get('http://cozshopping.codestates-seb.link/api/v1/products')
@@ -23,12 +26,12 @@ const Main_page = () => {
         getData();
     }, []);
     const localdata = JSON.parse(window.localStorage.getItem('itemdata'))
-    console.log(data[0])
 
     return (
         <div className="main">
             <Header/>
-            <ItemList data ={data} />
+            <ItemList data ={data} setBookmarkList={setBookmarkList} bookmarkList={bookmarkList}/>
+            <BookmarkList bookmarkList={bookmarkList} setBookmarkList={setBookmarkList}/>
             <Footer/>
         </div>
     )

@@ -2,9 +2,8 @@ import React ,{useState, useEffect} from "react";
 import "./item.css"
 import Modal from "./Modal";
 
-const ExhibitionItem = ({data, idx}) => {
+const ExhibitionItem = ({data, idx, setBookmarkList, bookmarkList}) => {
     const [clicked, setClicked] = useState(false);
-    const [list, setList] = useState([]);
     const [open, setOpen] = useState(false);
 
     const handleModal = () => {
@@ -12,28 +11,31 @@ const ExhibitionItem = ({data, idx}) => {
     }
 
     const handleBookmark = () => {
-        setList([...list, data[idx]]);
+        setBookmarkList([...bookmarkList, data[idx]])
         setClicked(!clicked);
     }
     const deleteBookmark = () => {
-        setList([...list.filter((el)=> el!==data[idx])]);
+        setBookmarkList([...bookmarkList.filter((el)=> el!==data[idx])]);
         setClicked(!clicked);
     }
-
-    const setBookmarkList = () => {
-        window.localStorage.setItem('ExhibitionBookmark', JSON.stringify(list));
-        console.log(JSON.parse(window.localStorage.getItem('ExhibitionBookmark')))
-    }
-    useEffect(() => {
-        setBookmarkList();
-    }, [list]);
+    useEffect(()=>{
+        if(data[idx] === undefined){
+            return
+        }
+        if(bookmarkList.filter((el)=>el.id===data[idx].id).length !== 0){
+            setClicked(true);
+        } else {
+            setClicked(false);
+        }
+        window.localStorage.setItem('bookmarkList', JSON.stringify(bookmarkList));
+    },[bookmarkList])
 
     if(data.length === 0){
         return 
-    } else {
+    } 
     return (
         <section>
-            {open ? <Modal data={data[idx]} setOpen={setOpen} setClicked={setClicked} setList={setList} list={list} clicked={clicked}/> : null}
+            {open ? <Modal data={data[idx]} setOpen={setOpen} setClicked={setClicked} setList={setBookmarkList} list={bookmarkList} clicked={clicked}/> : null}
             <div className="img_container">
                 <img src={data[idx].image_url} alt='' className="background" onClick={handleModal}></img>
                 <img src="img/북마크 해제 아이콘.png" className={!clicked ? "bookmark" : 'hide'} onClick={handleBookmark}></img>
@@ -49,7 +51,6 @@ const ExhibitionItem = ({data, idx}) => {
             </div>
         </section>
         )
-    }
 }
 
 export default ExhibitionItem
