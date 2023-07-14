@@ -1,10 +1,9 @@
-import React ,{useState, useEffect} from "react";
+import React ,{useState} from "react";
 import "./item.css"
 import Modal from "./Modal";
 
-const BrandItem = ({data, idx}) => {
+const BrandItem = ({data, idx, setBookmarkList, bookmarkList}) => {
     const [clicked, setClicked] = useState(false);
-    const [list, setList] = useState([]);
     const [open, setOpen] = useState(false);
 
     const handleModal = () => {
@@ -12,28 +11,20 @@ const BrandItem = ({data, idx}) => {
     }
 
     const handleBookmark = () => {
-        setList([...list, data[idx]]);
+        setBookmarkList([...bookmarkList, data[idx]])
         setClicked(!clicked);
     }
     const deleteBookmark = () => {
-        setList([...list.filter((el)=> el!==data[idx])]);
+        setBookmarkList([...bookmarkList.filter((el)=> el!==data[idx])]);
         setClicked(!clicked);
     }
 
-    const setBookmarkList = () => {
-        window.localStorage.setItem('BrandBookmark', JSON.stringify(list));
-        console.log(JSON.parse(window.localStorage.getItem('BrandBookmark')))
-    }
-    useEffect(() => {
-        setBookmarkList();
-    }, [list]);
-
     if(data.length === 0){
         return 
-    } else {
+    } 
     return (
         <section>
-            {open ? <Modal data={data[idx]} setOpen={setOpen} setClicked={setClicked} setList={setList} list={list} clicked={clicked}/> : null}
+            {open ? <Modal data={data[idx]} setOpen={setOpen} setClicked={setClicked} setList={setBookmarkList} list={bookmarkList} clicked={clicked}/> : null}
             <div className="img_container">
                 <img src={data[idx].brand_image_url} alt='' className="background" onClick={handleModal}></img>
                 <img src="img/북마크 해제 아이콘.png" className={!clicked ? "bookmark" : 'hide'} onClick={handleBookmark}></img>
@@ -50,7 +41,7 @@ const BrandItem = ({data, idx}) => {
             </div>
         </section>
         )
-    }
+    
 }
 
 export default BrandItem
