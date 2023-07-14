@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import './item.css'
 import Modal from "./Modal";
 
@@ -18,7 +18,14 @@ const ProductItem = ({data, idx, setBookmarkList, bookmarkList}) => {
         setBookmarkList([...bookmarkList.filter((el)=> el!==data[idx])]);
         setClicked(!clicked);
     }
-
+    useEffect(()=>{
+        if(bookmarkList.filter((el)=>el.id===data[idx].id).length !== 0){
+            setClicked(true);
+        } else {
+            setClicked(false);
+        }
+        
+    },[bookmarkList])
 
     if(data.length === 0){
         return 

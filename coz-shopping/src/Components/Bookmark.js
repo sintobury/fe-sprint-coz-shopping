@@ -22,7 +22,7 @@ const BookmarkList = ({bookmarkList, setBookmarkList}) => {
         setViewlist(view);
         }
     },[bookmarkList])
-    console.log(viewList)
+    
     return (
         <div className="bookmarklist_container">
             <h2>북마크 리스트</h2>
