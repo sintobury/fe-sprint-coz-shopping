@@ -1,0 +1,9 @@
+.BookmarkList_page {
+    margin: 0;
+    padding-top: 104px;
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
