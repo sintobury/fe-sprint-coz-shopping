@@ -6,20 +6,18 @@ const ProductItem = ({data, idx, setBookmarkList, bookmarkList}) => {
     const [clicked, setClicked] = useState(false);
     const [open, setOpen] = useState(false);
 
-    const localBookmarkList = JSON.parse(window.localStorage.getItem('bookmarkList'))
-    
-    console.log('data[idx]:', data[idx], 'localBookmarkList:', localBookmarkList)
+   
     const handleModal = () => {
         setOpen(!open);
     }
 
     const handleBookmark = () => {
         setBookmarkList([...bookmarkList, data[idx]])
-        setClicked(!clicked);
+        setClicked(true);
     }
     const deleteBookmark = () => {
-        setBookmarkList([...bookmarkList.filter((el)=> el!==data[idx])]);
-        setClicked(!clicked);
+        setBookmarkList(bookmarkList.filter((el)=> el.id!==data[idx].id));
+        setClicked(false);
     }
     
     useEffect(()=>{
@@ -32,11 +30,11 @@ const ProductItem = ({data, idx, setBookmarkList, bookmarkList}) => {
             setClicked(false);
         }
         window.localStorage.setItem('bookmarkList', JSON.stringify(bookmarkList));
-    },[bookmarkList])
+    },[data, idx, bookmarkList])
 
     if(data.length === 0){
         return 
-    } else {
+    } 
     return (
         <section>
             {open ? <Modal data={data[idx]} setOpen={setOpen} setClicked={setClicked} setList={setBookmarkList} list={bookmarkList} clicked={clicked}/> : null}
@@ -58,7 +56,7 @@ const ProductItem = ({data, idx, setBookmarkList, bookmarkList}) => {
             </div>
         </section>
         )
-    }
+    
 }
 
 export default ProductItem

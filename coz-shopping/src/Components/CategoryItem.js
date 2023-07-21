@@ -12,23 +12,23 @@ const CategoryItem = ({data, idx, setBookmarkList, bookmarkList}) => {
 
     const handleBookmark = () => {
         setBookmarkList([...bookmarkList, data[idx]])
-        setClicked(!clicked);
+        setClicked(true);
     }
     const deleteBookmark = () => {
-        setBookmarkList([...bookmarkList.filter((el)=> el!==data[idx])]);
-        setClicked(!clicked);
+        setBookmarkList([...bookmarkList.filter((el)=> el.id!==data[idx].id)]);
+        setClicked(false);
     }
     useEffect(()=>{
         if(data[idx] === undefined){
             return
         }
-        if(bookmarkList.filter((el)=>el.id===data[idx].id).length !== 0){
+        if(bookmarkList.some((el)=> el.id === data[idx].id)) {
             setClicked(true);
         } else {
             setClicked(false);
         }
         window.localStorage.setItem('bookmarkList', JSON.stringify(bookmarkList));
-    },[bookmarkList])
+    },[data, idx, bookmarkList])
 
     if(data.length === 0){
         return 

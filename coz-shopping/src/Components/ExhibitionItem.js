@@ -15,7 +15,7 @@ const ExhibitionItem = ({data, idx, setBookmarkList, bookmarkList}) => {
         setClicked(!clicked);
     }
     const deleteBookmark = () => {
-        setBookmarkList([...bookmarkList.filter((el)=> el!==data[idx])]);
+        setBookmarkList(bookmarkList.filter((el)=> el.id!==data[idx].id));
         setClicked(!clicked);
     }
     useEffect(()=>{
@@ -28,7 +28,7 @@ const ExhibitionItem = ({data, idx, setBookmarkList, bookmarkList}) => {
             setClicked(false);
         }
         window.localStorage.setItem('bookmarkList', JSON.stringify(bookmarkList));
-    },[bookmarkList])
+    },[data, idx, bookmarkList])
 
     if(data.length === 0){
         return 
