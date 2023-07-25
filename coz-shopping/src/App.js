@@ -4,6 +4,7 @@ import { BrowserRouter,Routes, Route } from 'react-router-dom';
 import axios from "axios";
 import Main_page from './Pages/Main_page';
 import ItemList_Page from './Pages/ItemList_page';
+import BookmarkList_page from './Pages/Bookmark_page';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Main_page data={data} bookmarkList={bookmarkList} setBookmarkList={setBookmarkList}/>}></Route>
           <Route path='/products/list' element={<ItemList_Page data={data} bookmarkList={bookmarkList} setBookmarkList={setBookmarkList}/>}></Route>
+          <Route path='/bookmark' element={<BookmarkList_page data={data} bookmarkList={bookmarkList} setBookmarkList={setBookmarkList}/>}></Route>
         </Routes>
        
       </div>

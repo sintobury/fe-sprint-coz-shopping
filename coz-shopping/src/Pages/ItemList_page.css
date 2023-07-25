@@ -1,6 +1,8 @@
 .ItemList_page {
     margin: 0;
     padding-top: 104px;
+    padding-left: 24px;
+    padding-right: 24px;
     gap: 24px;
     display: flex;
     flex-direction: column;
@@ -10,8 +12,11 @@
 
 .ItemList_page_container {
     display: flex;
+    width: 90%;
+    max-width: 1128px; 
     flex-direction: column;
     align-items: center;
+    padding: 24px;
     gap: 24px;
 }
 
@@ -22,9 +27,12 @@
 }
 
 .Items_container {
+    padding: 24px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
+    align-content: center;
     gap: 24px;
 }

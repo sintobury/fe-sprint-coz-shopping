@@ -1,4 +1,5 @@
 .itemlist_container {
+    flex: 1 0 332.5px;
     padding: 24px;
     width: 90%;
     max-width: 1128px;
