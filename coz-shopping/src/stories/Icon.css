@@ -1,0 +1,40 @@
+.Menu {
+    width: 30px;
+    height: 20px;
+    top:2px;
+    left:2px;
+    border:3px;
+    padding: 10px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+}
+
+.Logo {
+    width: 55px;
+    height: 30px;
+    padding: 10px;
+}
+.BookmarkOffButton{
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+}
+.BookmarkOnButton{
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+}
+.Bookmark{
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+}
+.Product{
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+}
